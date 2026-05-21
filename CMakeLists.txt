@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.20)
-project(PongPong C CXX)
+project(TEMPLATE C CXX)
 
 set(PROFANLIB_DIR "${CMAKE_SOURCE_DIR}/3rdParty/profanOS")
 set(PROFANOS_DIR "${CMAKE_SOURCE_DIR}/profanOS")
