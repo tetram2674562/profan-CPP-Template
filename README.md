@@ -4,6 +4,15 @@ A little template for my C++ programs on [profanOS](<https://github.com/elydre/p
 It does not have the std headers. (I'm gonna wait for them to come on profan, I am too lazy to build it on my own)
 But you can still use the OOP concepts !
 
+## Cloning this repository 
+
+Basically :
+```
+git clone https://github.com/tetram2674562/profan-CPP-Template.git 
+cd profan-CPP-Template
+git submodule update --init
+```
+
 ## Compiling the program
 
 ```
