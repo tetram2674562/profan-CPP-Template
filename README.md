@@ -1,7 +1,7 @@
-# Template for C++ programs on profanOS
+# Template for C / C++ programs on profanOS
 
-A little template for my C++ programs on [profanOS](<https://github.com/elydre/profanOS>) :D
-
+A little template for my C / C++ programs on [profanOS](<https://github.com/elydre/profanOS>) :D
+  
 ## Cloning this repository 
 
 Basically :
@@ -24,7 +24,7 @@ And then you got your executable file in your build directory, ready to be ran o
 ## About std library
 
 Those library files are provided by pf4, thanks to him !
-However, they're still very unstable so careful ! (for example iostream header is giving linker errors)
+However, they're still very unstable so careful ! (for example iostream header may not really work as intended)
 
 ## Licensing
 
