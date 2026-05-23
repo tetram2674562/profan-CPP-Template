@@ -1,5 +1,7 @@
 // Template from tetram26 <3
-#include <stdio.h>
+#include <cstdio>
+#include <typeinfo>
+
 #include "Yippee2.h"
 class YIPPEE {
 public:
@@ -12,9 +14,18 @@ public:
     }
 };
 
+class SuperYippee : public YIPPEE {};
+
+class WeakerYippee : public YIPPEE {};
+
 
 int main() {
-    YIPPEE yippee;
+    SuperYippee* yippee = new SuperYippee();
     Yippee(23);
+    if (typeid(*yippee) == typeid(SuperYippee)) {
+        printf("SUPER YIPEEE !\n");
+    }
+    delete yippee;
+
     return 0;
 }

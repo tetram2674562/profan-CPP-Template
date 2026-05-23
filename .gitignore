@@ -1,5 +1,5 @@
 cmake-build-debug/
-3rdParty/
+3rdParty/profanOS/libc/
 profanOS/
 .idea/
 build/
