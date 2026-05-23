@@ -21,7 +21,7 @@ endif()
 # libpthread
 file(DOWNLOAD https://github.com/elydre/libatron/releases/download/latest/libpthread.a ${PROFANLIB_DIR}/libstdcpp/libs/libpthread.a)
 # libgcc
-file(DOWNLOAD https://github.com/elydre/libatron/releases/download/latest/libgcc.a ${PROFANLIB_DIR}/libstdcpp/libs/libgcc.a)
+# file(DOWNLOAD https://github.com/elydre/libatron/releases/download/latest/libgcc.a ${PROFANLIB_DIR}/libstdcpp/libs/libgcc.a)
 
 # Compiler with flags
 set(CMAKE_C_COMPILER gcc)
