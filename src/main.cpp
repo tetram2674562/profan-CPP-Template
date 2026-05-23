@@ -3,6 +3,7 @@
 #include <typeinfo>
 
 #include "iostream"
+#include "sstream"
 #include "Yippee2.h"
 class YIPPEE {
 public:
@@ -20,6 +21,7 @@ class SuperYippee : public YIPPEE {};
 class WeakerYippee : public YIPPEE {};
 
 int main() {
+    std::ios_base::sync_with_stdio(false);
     SuperYippee* yippee = new SuperYippee();
     Yippee(23);
     if (typeid(*yippee) == typeid(SuperYippee)) {
@@ -27,6 +29,9 @@ int main() {
     }
     delete yippee;
     // cout isn't working for some reason ?
-    std::cout << "uwu";
+    std::stringstream stream;
+    stream << "Hello YIPPEE! \n";
+    printf(stream.str().c_str());
+    std::cout << "Hello from cout !!!" << std::endl;
     return 0;
 }
