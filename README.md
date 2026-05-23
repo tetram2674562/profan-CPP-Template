@@ -23,7 +23,7 @@ And then you got your executable file in your build directory, ready to be ran o
 
 ## About std library
 
-Those library files are provided by pf4, thanks to him !
+Some of those library files has been provided to me by pf4, thanks to him !
 However, they're still very unstable so careful ! (for example iostream header may not really work as intended)
 
 ## Licensing
