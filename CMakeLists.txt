@@ -20,7 +20,7 @@ if(NOT EXISTS "${PROFANLIB_DIR}/libs/libc.a")
 endif()
 # libpthread
 file(DOWNLOAD https://github.com/elydre/libatron/releases/download/latest/libpthread.a ${PROFANLIB_DIR}/libstdcpp/libs/libpthread.a)
-# libgcc
+# libgcc (invalid for now)
 # file(DOWNLOAD https://github.com/elydre/libatron/releases/download/latest/libgcc.a ${PROFANLIB_DIR}/libstdcpp/libs/libgcc.a)
 
 # Compiler with flags
