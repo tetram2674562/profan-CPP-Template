@@ -9,7 +9,7 @@ file(MAKE_DIRECTORY ${PROFANLIB_DIR}/libc/headers)
 # Libc
 if (NOT EXISTS "${PROFANLIB_DIR}/libs/libc.a")
     # file(DOWNLOAD https://github.com/elydre/libatron/releases/download/latest/libc.so ${CMAKE_SOURCE_DIR}/3rdParty/profanOS/libc.so)
-    file(DOWNLOAD https://github.com/elydre/libatron/releases/download/latest/libc.a ${PROFANLIB_DIR}/libc/libs/libc.a)
+    file(DOWNLOAD https://github.com/elydre/libatron/releases/download/latest/libc.so ${PROFANLIB_DIR}/libc/libs/libc.so)
 
     # Profan Headers
     file(DOWNLOAD https://github.com/elydre/libatron/releases/download/latest/profanOS_headers.tar.gz ${PROFANLIB_DIR}/libc/profanOS_headers.tar.gz)
@@ -20,7 +20,7 @@ if (NOT EXISTS "${PROFANLIB_DIR}/libs/libc.a")
 endif ()
 
 # libpthread
-file(DOWNLOAD https://github.com/elydre/libatron/releases/download/latest/libpthread.a ${PROFANLIB_DIR}/libstdcpp/libs/libpthread.a)
+file(DOWNLOAD https://github.com/elydre/libatron/releases/download/latest/libpthread.so ${PROFANLIB_DIR}/libstdcpp/libs/libpthread.so)
 # libgcc (invalid for now)
 # file(DOWNLOAD https://github.com/elydre/libatron/releases/download/latest/libgcc.a ${PROFANLIB_DIR}/libstdcpp/libs/libgcc.a)
 
@@ -50,14 +50,14 @@ target_link_options(main PRIVATE
         "-Wl,-T${PROFANOS_DIR}/tools/link_elf.ld"
 )
 
-# link with static profan libc
+# link with profan libs
 # https://stackoverflow.com/questions/45135/why-does-the-order-in-which-libraries-are-linked-sometimes-cause-errors-in-gcc/409470#409470
 # Linking them in the correct order
 target_link_libraries(main PRIVATE
         -Wl,--start-group
         ${PROFANLIB_DIR}/libstdcpp/libs/libstdc++.a
-        ${PROFANLIB_DIR}/libc/libs/libc.a
-        ${PROFANLIB_DIR}/libstdcpp/libs/libpthread.a
+        ${PROFANLIB_DIR}/libc/libs/libc.so
+        ${PROFANLIB_DIR}/libstdcpp/libs/libpthread.so
         ${PROFANLIB_DIR}/libstdcpp/libs/libgcc.a
         -Wl,--end-group
 )

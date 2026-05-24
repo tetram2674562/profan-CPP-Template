@@ -21,8 +21,7 @@ class SuperYippee : public YIPPEE {};
 class WeakerYippee : public YIPPEE {};
 
 int main() {
-    std::ios_base::sync_with_stdio(false);
-    SuperYippee* yippee = new SuperYippee();
+    SuperYippee* yippee = new SuperYippee;
     Yippee(23);
     if (typeid(*yippee) == typeid(SuperYippee)) {
         printf("SUPER YIPEEE !\n");
