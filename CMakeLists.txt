@@ -7,7 +7,7 @@ set(PROFANOS_DIR "${CMAKE_SOURCE_DIR}/profanOS")
 # Download all dependencies from profan and install them.
 file(MAKE_DIRECTORY ${PROFANLIB_DIR}/libc/headers)
 # Libc
-if(NOT EXISTS "${PROFANLIB_DIR}/libs/libc.a")
+if (NOT EXISTS "${PROFANLIB_DIR}/libs/libc.a")
     # file(DOWNLOAD https://github.com/elydre/libatron/releases/download/latest/libc.so ${CMAKE_SOURCE_DIR}/3rdParty/profanOS/libc.so)
     file(DOWNLOAD https://github.com/elydre/libatron/releases/download/latest/libc.a ${PROFANLIB_DIR}/libc/libs/libc.a)
 
@@ -17,7 +17,8 @@ if(NOT EXISTS "${PROFANLIB_DIR}/libs/libc.a")
             INPUT ${PROFANLIB_DIR}/libc/profanOS_headers.tar.gz
             DESTINATION ${PROFANLIB_DIR}/libc/headers
     )
-endif()
+endif ()
+
 # libpthread
 file(DOWNLOAD https://github.com/elydre/libatron/releases/download/latest/libpthread.a ${PROFANLIB_DIR}/libstdcpp/libs/libpthread.a)
 # libgcc (invalid for now)
@@ -61,7 +62,27 @@ target_link_libraries(main PRIVATE
         -Wl,--end-group
 )
 
-# target_link_libraries(main PRIVATE ${PROFANLIB_DIR}/libc/libs/libc.a) # libc for standard c headers
-# target_link_libraries(main PRIVATE ${PROFANLIB_DIR}/libstdcpp/libs/libstdc++.a) # libstdc++ for std headers :D
-# target_link_libraries(main PRIVATE ${PROFANLIB_DIR}/libstdcpp/libs/libsupc++.a) # libsupc++ for exception and RTTI (typeid my beloved <3)
-# target_link_libraries(main PRIVATE ${PROFANLIB_DIR}/libstdcpp/libs/libgcc.a) # libgcc
+
+# Addons
+
+set(THIRDPARTY_DIR ${CMAKE_SOURCE_DIR}/3rdParty)
+
+file(GLOB LIB_DIRS
+        RELATIVE ${THIRDPARTY_DIR}
+        ${THIRDPARTY_DIR}/*
+)
+foreach (lib ${LIB_DIRS})
+    if (lib STREQUAL "profanOS")
+        continue()
+    endif ()
+    set(LIB_PATH "${THIRDPARTY_DIR}/${lib}")
+    if (IS_DIRECTORY "${LIB_PATH}")
+        if (EXISTS "${LIB_PATH}/headers")
+            target_include_directories(main PRIVATE "${LIB_PATH}/headers")
+        endif ()
+        file(GLOB LIB_FILES "${LIB_PATH}/*.a" "${LIB_PATH}/*.so")
+        if (LIB_FILES)
+            target_link_libraries(main PRIVATE ${LIB_FILES})
+        endif ()
+    endif ()
+endforeach ()
